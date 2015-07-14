@@ -1,0 +1,11 @@
+#!/bin/sh
+LCORE="./"
+COMMONOPTS="-Fu${LCORE} -Fi${LCORE} -Sd -XX"
+FPC="fpc"
+./clean
+$FPC $COMMONOPTS bcreationdate.dpr
+./bcreationdate
+$FPC $COMMONOPTS -dnomodeless bircd.dpr
+brandelf -t Linux bircd
+$FPC $COMMONOPTS mkpasswd.dpr
+brandelf -t Linux mkpasswd
